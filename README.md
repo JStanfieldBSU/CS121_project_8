@@ -69,6 +69,58 @@
 ```
 import libraries (iostream fstream string sstream)
 
+create a vector of student pointers
+
+void loadStudents(std::vector<Student*>&){
+  open students.csv in with ifstream students
+  temp string currentLine
+  stringstream ss
+  
+  while(getline(students, currentLine)){
+  new student on the heap, 
+  initialize new student with current line
+  push the student to the end of the stack
+}  
+
+
+void printStudents(std::vector<Student*>&){
+  for each student in the vector
+    call the print statement from the student class
+  
+}
+
+void showStudentNames(std::vector<Student*>&){
+  for each student in the vector
+    call getLastFirst and getCreditHours
+}
+
+void findStudent(std::vector<Student*>&){
+  uhhhhhhhhh
+}
+
+void delStudents(std::vector<Student*>&){
+  for each student in the vector
+    call deconstructor ~student()
+}
+
+std::string menu(){
+  const std::string menuText = "0) Quit \n1) Print all Student Names\n2) Print all Student Data\n3) Find a Student\n";
+
+while(keepGoing){
+    std::cout << menuText; // prints the menu
+    accept user input of 0-3
+    if(input 0)
+      keepGoing false
+    elseif(input 1)
+      printStudents(vector)
+    elseif(input 2)
+      showStudentNames(vector)
+    elseif(input 3)
+      findStudent(vector)
+    else
+      // should just ask again
+  }
+}
 
 ```
 
@@ -135,7 +187,7 @@ print Student
   print "Credits: " and then print creditHours
 
 getLastFirst
-  return lastName , firstName \n
+  return lastName , firstName
 
 getters (studentString, firstName, lastName, creditHours)
   seems self explanatory, simply return the value of sought property
@@ -226,6 +278,7 @@ class Student{
     ~Student();
     void init(studentString);
     void printStudent();
+    std::string getLastFirst();
     std::string getFirstName();
     void setFirstName(std::string firstName);
     std::string getLastName();
