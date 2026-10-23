@@ -22,3 +22,6 @@ run: program
 
 debug: program
 	gdb program
+
+valgrind:
+	valgrind ./program
