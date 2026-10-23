@@ -110,6 +110,7 @@ void findStudent(std::vector<Student*>&){
     if(check is not no position){
       push the current student into searchTrue
     } 
+  }
   if(searchTrue.size() > 0){
   call printStudents(searchTrue);
   }
