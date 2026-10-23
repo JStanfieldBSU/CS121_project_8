@@ -15,6 +15,7 @@
   + ~Student()
   + void init(studentString)
   + void printStudent()
+  + string getLastFirst()
   + string getFirstName()
   + void setFirstName(firstName : string)
   + string getLastName()
@@ -189,7 +190,7 @@ print Student
   print "Credits: " and then print creditHours
 
 getLastFirst
-  return lastName , firstName
+  return lastName , firstName , \n
 
 getters (studentString, firstName, lastName, creditHours)
   seems self explanatory, simply return the value of sought property
