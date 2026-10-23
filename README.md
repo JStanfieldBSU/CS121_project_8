@@ -112,7 +112,6 @@ void findStudent(std::vector<Student*>&){
     } 
   if(searchTrue.size() > 0){
   call printStudents(searchTrue);
-  call delStudents(searchTrue);'
   }
   else{
     cout << "student not found" << endl;
