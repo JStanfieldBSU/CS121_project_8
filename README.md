@@ -123,10 +123,13 @@ void delStudents(std::vector<Student*>&){
     call deconstructor ~student()
 }
 
-std::string menu(){
+void menu(){
   const std::string menuText = "0) Quit \n1) Print all Student Names\n2) Print all Student Data\n3) Find a Student\n";
+  std::string input;
+  bool keepGoing = true;
 
-while(keepGoing){
+  while(keepGoing){
+    clear input;
     std::cout << menuText; // prints the menu
     accept user input of 0-3
     if(input 0)
@@ -142,27 +145,6 @@ while(keepGoing){
   }
 }
 
-```
-
-### sort
-```
-implement a sort algo.
-professor probably wants bubble sort. would it be blackbelt to learn insertion?
-figure out how to alphabetize the creditHours with same int.
-should this be two different functions for sorting alphabet vs by int.
-
-while(keepGoing)
-  something
-  something
-  something
-```
-
-### studentSwap(Student a, Student b)
-```
-create a temporary student variable 'temp'
-set temp to student a
-set student a to student b
-set student b to temp
 ```
 
 ## Student.cpp
@@ -373,3 +355,52 @@ class Date{
 do i need setters? honestly probably not. probably better to keep them though. Even if they're unneccesary, they could be used for a blackbelt at the end.
 
 maybe i could make it so you could add a second file of students and be able to see them as one list and sort them together.
+
+## Blackbelt (Sorting)
+void sortLast(std::vector<Student*>&);
+bool compLast(Student* a, Student* b);
+```
+call sort from the algo header with the first item in the students vector and the last, as well as a comparison func.
+the comparison func takes the current two compared students and grabs their lastname through the class's getter function and compares them
+this one sorts in alphabetical order based on the comparison
+```
+
+void sortFirst(std::vector<Student*>&);
+bool compFirst(Student* a, Student* b);
+```
+call sort from the algo header with the first item in the students vector and the last, as well as a comparison func.
+the comparison func takes the current two compared students and grabs their firstname through the class's getter function and compares them
+this one sorts in alphabetical order based on the comparison
+```
+
+void sortCredits(std::vector<Student*>&);
+bool compCredits(Student* a, Student* b);
+```
+call sort from the algo header with the first item in the students vector and the last, as well as a comparison func.
+the comparison func takes the current two compared students and grabs their creditHours through the class's getter function and compares them
+this one sorts in descending order based on the comparison
+```
+
+void sortMenu(); // Functions near identical to the menu() function, except it jumps back to the upper menu after everything but invalid input.
+```
+  const std::string menuText = "0) Quit \n1) Sort by Last Name\n2) Sort by First Name\n3) Sort by Credit Hour\n";
+  std::string input;
+  bool keepGoing = true;
+
+  while(keepGoing){
+    clear input;
+    std::cout << menuText; // prints the menu
+    accept user input of 0-3
+    if(input 0)
+      keepGoing false
+    elseif(input 1)
+      sortLast(vector)
+      keepGoing false
+    elseif(input 2)
+      sortFirst(vector)
+    elseif(input 3)
+      sortCredits(vector)
+    else
+      // should just ask again
+  }
+```

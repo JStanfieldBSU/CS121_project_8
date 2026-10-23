@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <algorithm>
 #include "Date.h"
 #include "Address.h"
 #include "Student.h"
@@ -12,8 +13,14 @@ void printStudents(std::vector<Student*>&);
 void showStudentNames(std::vector<Student*>&);
 void findStudent(std::vector<Student*>&);
 void delStudents(std::vector<Student*>&);
+void sortLast(std::vector<Student*>&);
+void sortFirst(std::vector<Student*>&);
+void sortCredits(std::vector<Student*>&);
 void menu();
 void sortMenu();
+bool compLast(Student* a, Student* b);
+bool compFirst(Student* a, Student* b);
+bool compCredits(Student* a, Student* b);
 
 std::vector<Student*> studentVector;
 int studentNumber = 0;
@@ -83,6 +90,18 @@ void delStudents(std::vector<Student*>& students){
   } // end for
 } // end delStudents
 
+void sortLast(std::vector<Student*>& students){
+  sort(students.begin(), students.end(), compLast);
+}
+
+void sortFirst(std::vector<Student*>& students){
+  sort(students.begin(), students.end(), compFirst);
+}
+
+void sortCredits(std::vector<Student*>& students){
+  sort(students.begin(), students.end(), compCredits);
+}
+
 void menu(){
   const std::string menuText = "0) Quit \n1) Print all Student Names\n2) Print all Student Data\n3) Find a Student\n4) Sort the File\n";
   const std::string sortMenuText = "0) Quit \n1) Sort by Last Name\n2) Sort by First Name\n3) Sort by Credit Hour\n";
@@ -109,7 +128,7 @@ void menu(){
       sortMenu();
     } // end elseif
     else{
-      std::cout << "Invalid Response.\n Please try again. \n";
+      std::cout << "Invalid Response.\nPlease try again. \n";
     } // end else
   } // end while
 } // end menu
@@ -121,22 +140,37 @@ void sortMenu(){
 
   while(keepGoing){
     input = "";
-    std::cout << sortMenuText;
+    std::cout << menuText;
     std::cin >> input;
     if(input == "0"){
     keepGoing = false;
     } // end if
     else if(input == "1"){
-      showStudentNames(studentVector);
+      sortLast(studentVector);
+      keepGoing = false;
     } // end elseif
     else if(input == "2"){
-      printStudents(studentVector);
+      sortFirst(studentVector);
+      keepGoing = false;
     } // end elseif
     else if(input == "3"){
-      findStudent(studentVector);
+      sortCredits(studentVector);
+      keepGoing = false;
     } // end elseif
     else{
-      std::cout << "Invalid Response.\n Please try again. \n";
+      std::cout << "Invalid Response.\nPlease try again. \n";
     } // end else
   } // end while
 } // end sortMenu
+
+bool compLast(Student* a, Student* b){
+  return a->getLastName() < b->getLastName();
+}
+
+bool compFirst(Student* a, Student* b){
+  return a->getFirstName() < b->getFirstName();
+}
+
+bool compCredits(Student* a, Student* b){
+  return a->getCreditHours() > b->getCreditHours();
+}
