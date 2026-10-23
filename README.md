@@ -95,7 +95,27 @@ void showStudentNames(std::vector<Student*>&){
 }
 
 void findStudent(std::vector<Student*>&){
-  uhhhhhhhhh
+  create a new vector searchTrue
+  create a new string searchTerm
+  create a new string studentName
+  
+  cout << "Last name of Student: ";
+  cin >> searchTerm;
+
+  for each student in the main vector{
+    studentName = "";
+    studentName = students[i]->getLastName();
+    int check = studentName.find(searchTerm);
+    if(check is not no position){
+      push the current student into searchTrue
+    } 
+  if(searchTrue.size() > 0){
+  call printStudents(searchTrue);
+  call delStudents(searchTrue);'
+  }
+  else{
+    cout << "student not found" << endl;
+  }
 }
 
 void delStudents(std::vector<Student*>&){
